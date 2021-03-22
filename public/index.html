@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fusion Wall</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 100%;
+            /* background-color: #fdb813; */
+            background: linear-gradient(241deg, rgba(253, 184, 19, 1) 35%, rgba(236, 167, 5, 1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #share-btn {
+            width: 70%;
+            height: 70%;
+            border-radius: 30px;
+            /* background-color: #FFEB3B; */
+            background-color: #fff;
+            color: rgba(17, 17, 17, 0.753);
+            font-family: 'roboto';
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 80px;
+            border: 0;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.267);
+            transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        #share-btn:hover {
+            transform: scale(0.9, 0.9);
+        }
+
+        #share-btn:active {
+            transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+            box-shadow: 0 4px 70px rgba(0, 0, 0, 0.288);
+            transform: scale(0.7, 0.7);
+            transform: translateY(-100px);
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="video"></div>
+
+    <div id="wrapper">
+        <button id="share-btn" onclick="_handleShareClick()">
+            Present my screen
+        </button>
+    </div>
+
+    <script src="/js/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js" defer></script>
+</body>
+
+</html>

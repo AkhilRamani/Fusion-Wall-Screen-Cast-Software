@@ -1,0 +1,38 @@
+{
+  "name": "fusion-wall",
+  "version": "1.0.0",
+  "description": "Live screen presenting/sharing tool",
+  "main": "electron.js",
+  "scripts": {
+    "start": "export NODE_ENV=prod && electron .",
+    "dev-server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-builder"
+  },
+  "author": "Akhil Ramani",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "local-ip": "^2.0.0",
+    "path": "^0.12.7",
+    "peer": "^0.6.1",
+    "socket.io": "^4.0.0"
+  },
+  "devDependencies": {
+    "electron": "^12.0.1",
+    "electron-builder": "^22.10.5",
+    "electron-reload": "^1.5.0"
+  },
+  "build": {
+    "appId": "fusion.wall.akhil",
+    "productName": "Fusion Wall",
+    "copyright": "Copyright © 2020 ${author}",
+    "mac": {
+      "category": "fusion.wall.category.productivity",
+      "icon": "build/icon.png"
+    },
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
