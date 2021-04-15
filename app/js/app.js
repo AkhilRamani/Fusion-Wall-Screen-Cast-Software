@@ -14,23 +14,20 @@ ipcRenderer.on('host-meta', (event, hostMeta) => {
 
     peer.on('open', id => {
         console.log('peer', id)
-        ipcRenderer.send('device-id', id)})
+        ipcRenderer.send('device-id', id)
+    })
 
     peer.on('call', call => {
         console.log('calls')
-    
+
         videoDiv.style.display = 'block'
         homeScreen.style.display = 'none'
-    
+
         call.answer();
         call.on('stream', stream => {
             addVideoStream(videoPlayer, stream)
         })
-        call.on('close', () => {
-            videoPlayer.remove();
-            videoDiv.style.display = 'none'
-            homeScreen.style.display = 'block'
-        })
+        // call.on('close', removeVideoStream)
     })
 })
 
@@ -45,11 +42,7 @@ ipcRenderer.on('start', (event, arg) => {
     console.log('got it', arg)
 })
 
-ipcRenderer.on('stop-share', () => {
-    videoPlayer.remove();
-    videoDiv.style.display = 'none'
-    homeScreen.style.display = 'block'
-})
+ipcRenderer.on('stop-share', removeVideoStream)
 
 function addVideoStream(player, stream) {
     player.srcObject = stream
@@ -57,4 +50,10 @@ function addVideoStream(player, stream) {
         player.play()
     })
     videoDiv.append(player)
+}
+
+function removeVideoStream() {
+    videoPlayer.remove();
+    videoDiv.style.display = 'none'
+    homeScreen.style.display = 'block'
 }

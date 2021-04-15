@@ -29,7 +29,11 @@
     "copyright": "Copyright © 2020 ${author}",
     "mac": {
       "category": "fusion.wall.category.productivity",
-      "icon": "build/icon.png"
+      "icon": "build/icon.icns",
+      "target": {
+        "target": "dmg",
+        "arch": "x64"
+      }
     },
     "directories": {
       "buildResources": "assets"

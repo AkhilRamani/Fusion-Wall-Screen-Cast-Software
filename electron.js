@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, nativeTheme } = require('electron')
 const path = require('path')
 const { initServer } = require('./server')
 
@@ -30,7 +30,7 @@ function createWindow() {
 
     mainWindow.loadFile('app/app.html')
     mainWindow.once('ready-to-show', mainWindow.show)
-
+    nativeTheme.themeSource = 'dark'
     // mainWindow.webContents.openDevTools()
 
     initServer(mainWindow.id);

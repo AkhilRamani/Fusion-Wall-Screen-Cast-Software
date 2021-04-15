@@ -10,11 +10,11 @@ let deviceId;
 
 const initServer = (mainWindowId) => {
     const options = {
-        key: fs.readFileSync('./ssl-certificates/localhost.key'),
-        cert: fs.readFileSync('./ssl-certificates/localhost.crt')
+        key: fs.readFileSync(path.join(__dirname, './ssl-certificates/localhost.key')),
+        cert: fs.readFileSync(path.join(__dirname, './ssl-certificates/localhost.crt'))
     };
 
-    const server = https.createServer(options ,app);
+    const server = https.createServer(options, app);
     const io = require('socket.io')(server)
 
     app.use(express.static(path.join(__dirname, './public')));
@@ -27,7 +27,7 @@ const initServer = (mainWindowId) => {
     const window = BrowserWindow.fromId(mainWindowId);
 
     ipcMain.on('get-host-meta', () => {
-        window.webContents.send('host-meta', { ip: localip(), port: server.address().port})
+        window.webContents.send('host-meta', { ip: localip(), port: server.address().port })
     })
 
     ipcMain.on('device-id', (event, id) => {
@@ -38,8 +38,11 @@ const initServer = (mainWindowId) => {
         socket.emit('device-id', deviceId);
 
         socket.on('stop-share', () => {
-            console.log('stopping/...')
             window.webContents.send('stop-share');
+        })
+
+        socket.on('disconnect', () => {
+            window.webContents.send('stop-share')
         })
     });
 }
