@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "Live screen presenting/sharing tool",
   "main": "electron.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/akhilramani/Fusion-Wall-Screen-Cast-Software.git"
+  },
   "scripts": {
     "start": "export NODE_ENV=prod && electron .",
     "dev-server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "electron-builder"
+    "build": "electron-builder",
+    "deploy": "electron-builder build --mac --publish always"
   },
   "author": "Akhil Ramani",
   "license": "ISC",
   "dependencies": {
+    "electron-updater": "^4.3.8",
     "express": "^4.17.1",
     "local-ip": "^2.0.0",
     "path": "^0.12.7",
@@ -34,6 +40,10 @@
         "target": "dmg",
         "arch": "x64"
       }
+    },
+    "publish": {
+      "provider": "github",
+      "token": "token"
     },
     "directories": {
       "buildResources": "assets"

@@ -1,5 +1,6 @@
 const { app, BrowserWindow, nativeTheme } = require('electron')
 const path = require('path')
+const { autoUpdater } = require('electron-updater');
 const { initServer } = require('./server')
 
 const env = process.env.NODE_ENV || 'development';
@@ -29,11 +30,16 @@ function createWindow() {
     })
 
     mainWindow.loadFile('app/app.html')
-    mainWindow.once('ready-to-show', mainWindow.show)
+    // mainWindow.once('ready-to-show', mainWindow.show)
     nativeTheme.themeSource = 'dark'
     // mainWindow.webContents.openDevTools()
 
     initServer(mainWindow.id);
+
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+        autoUpdater.checkForUpdatesAndNotify();
+    });
 }
 
 app.allowRendererProcessReuse = true
@@ -71,4 +77,11 @@ app.on('certificate-error', (event, webContents, url, error, certificate, callba
     // and we then say "it is all fine - true" to the callback
     event.preventDefault();
     callback(true);
+});
+
+autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('update_available');
+});
+autoUpdater.on('update-downloaded', () => {
+    mainWindow.webContents.send('update_downloaded');
 });

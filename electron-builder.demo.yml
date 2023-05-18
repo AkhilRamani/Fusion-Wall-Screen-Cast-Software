@@ -1,0 +1,14 @@
+appId: fusion.wall.akhil
+productName: Fusion Wall
+copyright: Copyright © 2020 ${author}
+mac:
+  category: fusion.wall.category.productivity
+  icon: build/icon.icns
+  target:
+    target: dmg
+    arch: x64
+publish:
+  provider: github
+  token: GITHUB_TOKEN
+directories:
+  buildResources: assets
