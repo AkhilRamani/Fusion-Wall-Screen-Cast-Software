@@ -1,11 +1,19 @@
 # Fusion Wall - Meeting Conferencing Presentation Tool
-A screen sharing/casting sofware to present screen of any computer connected in a network to a central Main Screen, which can be TV, Monitor, Projector etc. Just install Fusion Wall software in a PC/MAC connected with main Screen and anybody can able to share his/her screen to that main presentating screen with just opening a URL into browser.
+
+A screen sharing/casting sofware to present screen of any computer connected in a network to a central Main Screen, which can be TV, Monitor, Projector etc. Install Fusion Wall software in a PC/MAC connected with main Screen and open a URL in a browser to instantly start sharing a screen.
 
 ### Illustration
-![dashboard illustration](https://github.com/akhilramani/animal-shelter-accounting-erp/blob/master/dashboard.jpg?raw=true)
+
+![dashboard illustration](/docs/screenshots/wallpaper_screen.png)
 
 ### Usecases
-Daily Meetings, Conferences, Anywhere where anyone can present to main screen
+
+Meeting/Collabration rooms, Conferences etc.
+
+### Standby mode
+
+Animation of Neon lights changing color and shape.
 
 ### Authors
-* **Akhil Ramani** - *Full Stack developer* - [Linkedin](https://www.linkedin.com/in/akhilramani)
+
+- **Akhil Ramani** - _Full Stack developer_ - [Linkedin](https://www.linkedin.com/in/akhilramani)
